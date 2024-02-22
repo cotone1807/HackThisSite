@@ -8,21 +8,21 @@ s = s.replace('17','1')
 
 text = ''
 char = '' 
-for i in range(7,len(s)) :
-	char += s[i]
-	if len(char) == 8 :
-		text += chr(int(char,2))
-		#print len(char)
-		#print int(char,2)
-		char = ''
-#print text
+a=len(s)//8 +1
+zero='0'
+for i in range(1, a):
+    temp = s
+    pos = i * 8
+    result = temp[:pos] + zero + temp[pos:]  # Insert zero at position 'pos'
+    for i in range(0, len(result)):
+        char += result[i]  # Use result instead of s to accumulate characters
+        if len(char) == 8:
+            print(char)
+            text += chr(int(char, 2))
+            char = ''
+    print(text)
+    text=''
+    print('------------------')
 
-char1 = ''
-for i in range(0,7) :
-	char1 += s[i]
 
-char1 =  char1 + '0'
-#print chr(int(char1,2))
 
-password = chr(int(char1,2)) + text
-print password
